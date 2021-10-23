@@ -1,28 +1,121 @@
 import './App.css';
-import {Dropdown, Button, FormControl, InputGroup, Container, Card, Accordion} from "react-bootstrap";
-import {useState} from "react";
+import { Dropdown, FormControl, InputGroup } from "react-bootstrap";
+import { useState } from "react";
 
 function App() {
     const [valueA, setValueA] = useState(0)
     const [valueB, setValueB] = useState(0)
+    const [valueC, setValueC] = useState(0)
+    const [triangleSpecies, setTriangleSpecies] = useState('not specified')
+    let sinusAlpha2 = 'jk'
+    let sinusBeta2 = 'jk'
+    let sinusGamma2 = 'jk'
+    let tangensGamma2 = 'jk'
+    let tangesAlpha2 = 'jk'
+    let tangensBeta2 = 'jk'
+    let cosineAlpha2 = 'jk'
+    let cosineBeta2 = 'jk'
+    let angleAlpha = 34
+    let angleBeta = 34
+    let angleGamma = 56
 
-    function calculateSinusCosinus() {
-
+    function calculateSinusTangens(alphaAngle, betaAngle, gammaAngle, secondValue, thirdValue) {
+        const sinusAlpha = Math.sin(alphaAngle / thirdValue)
+        sinusAlpha2 = sinusAlpha
+        const sinusBeta = Math.sin(betaAngle / thirdValue)
+        sinusBeta2 = sinusBeta
+        const sinusGamma = Math.sin(gammaAngle / thirdValue)
+        sinusGamma2 = sinusGamma
+        const tangensAlpha = Math.tan(alphaAngle / secondValue)
+        tangesAlpha2 = tangensAlpha
+        const tangensBeta = Math.tan(betaAngle / secondValue)
+        tangensBeta2 = tangensBeta
+        const tangensGamma = Math.tan(gammaAngle / secondValue)
+        tangensGamma2 = tangensGamma
+        console.log(tangensGamma)
     }
 
-    function calculateTriangle() {
-
+    function calculateTriangle(firstValue, secondValue, thirdValue) {
+        // Für SSS
+        const firstValue2 = Math.pow(firstValue, 2) - Math.pow(secondValue, 2) - Math.pow(thirdValue, 2)
+        const cosineOfAlpha = firstValue2 / 2 * secondValue * thirdValue
+        cosineAlpha2 = cosineOfAlpha
+        const alphaAngle = Math.cos(cosineOfAlpha)
+        angleAlpha = alphaAngle
+        const secondValue2 = Math.pow(secondValue, 2) - Math.pow(firstValue, 2) - Math.pow(thirdValue, 2)
+        const cosineOfBeta = secondValue2 / (-2 * firstValue * thirdValue)
+        cosineBeta2 = cosineOfBeta
+        const betaAngle = Math.cos(secondValue2 / (-2 * firstValue * thirdValue))
+        angleBeta = betaAngle
+        const gammaAngle = 180 - (alphaAngle + betaAngle)
+        angleGamma = gammaAngle
+        calculateSinusTangens(alphaAngle, betaAngle, gammaAngle, secondValue, thirdValue)
+        findoutTriangleSpecies(firstValue, secondValue, thirdValue)
     }
 
-    function calculateTangens() {
+    const findoutTriangleSpecies = (firstValue, secondValue, thirdValue) => {
+        if (firstValue === secondValue && firstValue === thirdValue && secondValue === thirdValue) {
+            // triangleSpecies = 'gleichseitig'
+        }
+    }
 
+    const initializeCanvas = (firstValue, secondValue, thirdValue, alphaAngle, betaAngle) => {
+        if(document.querySelector("#canvas")) {
+            var canvasElement = document.querySelector("#canvas");
+            var ctx = canvasElement.getContext("2d");
+            // the width of the canvas
+            let cw = (canvasElement.width = 150),
+                cx = cw / 2;
+            //the height of the canvas
+            let ch = (canvasElement.height = 150),
+                cy = ch / 2;
+            //your data
+            let a = firstValue,
+                b = secondValue,
+                c = thirdValue;
+            // In this case you have an isosceles triangle since a = b = 30
+            // this triangle is circumscribed in a circle with a radius = 30
+            let R = 30;
+            // calculate the angle between the two sides of equal length
+            let angle = Math.asin(.5 * c / a);
+    
+            //draw the circumscribed circle:
+            ctx.beginPath();
+            ctx.arc(cx, cy, R, 0, 2 * Math.PI);
+            ctx.stroke();
+    
+    
+            var triangle = {
+                //the first vertex is in the center of the canvas
+                //you may decide to change this.
+                x1: cx,
+                y1: cy,
+                //the second vertex is on the circumscribed circle at 0 radians where R is the radius of the circle ( a = 30, b=30 )
+                //you may decide to change this.
+                x2: cx + R,
+                y2: cy,
+                //calculate the 3-rd vertex
+                x3: cx + R * Math.cos(alphaAngle),
+                y3: cy + R * Math.sin(betaAngle)
+            };
+    
+            ctx.strokeStyle = "red";
+    
+            ctx.beginPath();
+            ctx.moveTo(triangle.x1, triangle.y1);
+            ctx.lineTo(triangle.x2, triangle.y2);
+            ctx.lineTo(triangle.x3, triangle.y3);
+            ctx.lineTo(triangle.x1, triangle.y1);
+            ctx.closePath();
+            ctx.stroke();
+        }  
     }
 
     return (
         <div className="App">
             <h1>TRIGO</h1>
-            <br/>
-            <br/>
+            <br />
+            <br />
             <InputGroup className="form-group w-50">
                 <FormControl
                     aria-label="Default"
@@ -37,9 +130,9 @@ function App() {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                    <Dropdown.Item onClick={console.log('here')}>Action</Dropdown.Item>
+                    <Dropdown.Item >Another action</Dropdown.Item>
+                    <Dropdown.Item>Something else</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
             <InputGroup className="form-group w-50">
@@ -55,16 +148,33 @@ function App() {
                     aria-label="Default"
                     aria-describedby="inputGroup-sizing-default"
                     value={valueA}
-                    onChange={e => setValueA(e.target.value)}
+                    onChange={e => setValueC(e.target.value)}
                 />
             </InputGroup>
+            <button onClick={calculateTriangle(valueA, valueB, valueC)}>Calculate</button>
             <h3>Sinus Cosinus</h3>
-            <br/>
-            <h3>Triangles</h3>
-            {valueA}
-            {valueB}
-            <br/>
+            <p>Sinus Alpha: {sinusAlpha2}</p>
+            <p>Sinus Beta: {sinusBeta2}</p>
+            <p>Sinus Gamma: {sinusGamma2}</p>
+            <p>Cosinus Alpha: {cosineAlpha2}</p>
+            <p>Cosinus Beta: {cosineBeta2}</p>
+            <br />
             <h3>Tangens</h3>
+            <p>Tangens Alpha: {tangesAlpha2} </p>
+            <p>Tangens Beta: {tangensBeta2}</p>
+            <p>Tangens Gamma: {tangensGamma2}</p>
+            <h3>Triangle</h3>
+            <button onClick={initializeCanvas(valueA, valueB, valueC, angleAlpha, angleBeta)}>Create Triangle</button>
+            <canvas id="canvas">
+
+            </canvas>
+            <br />
+            <h3>Triangle Species</h3>
+            <h3>{triangleSpecies}</h3>
+            <h3>Angles</h3>
+            <p>Winkel Alpha: {angleAlpha}</p>
+            <p>Winkel Beta: {angleBeta}</p>
+            <p>Winkel Gamma: {angleGamma}</p>
 
         </div>
 
