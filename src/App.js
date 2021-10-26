@@ -15,20 +15,20 @@ function App() {
     let tangensBeta2 = 'jk'
     let cosineAlpha2 = 'jk'
     let cosineBeta2 = 'jk'
-    let angleAlpha = 34
-    let angleBeta = 34
-    let angleGamma = 56
+    let angleAlpha = null
+    let angleBeta = null
+    let angleGamma = null
 
-    function calculateSinusTangens(alphaAngle, betaAngle, gammaAngle, secondValue, thirdValue) {
-        const sinusAlpha = Math.sin(alphaAngle / thirdValue)
+    function calculateSinusTangens(alphaAngle, betaAngle, gammaAngle, secondValue, thirdValue, firstValue) {
+        const sinusAlpha = Math.sin( firstValue / thirdValue)
         sinusAlpha2 = sinusAlpha
-        const sinusBeta = Math.sin(betaAngle / thirdValue)
+        const sinusBeta = Math.sin(secondValue / thirdValue)
         sinusBeta2 = sinusBeta
-        const sinusGamma = Math.sin(gammaAngle / thirdValue)
+        const sinusGamma = Math.sin(thirdValue / thirdValue)
         sinusGamma2 = sinusGamma
-        const tangensAlpha = Math.tan(alphaAngle / secondValue)
+        const tangensAlpha = Math.tan(firstValue / secondValue)
         tangesAlpha2 = tangensAlpha
-        const tangensBeta = Math.tan(betaAngle / secondValue)
+        const tangensBeta = Math.tan(secondValue / firstValue)
         tangensBeta2 = tangensBeta
         const tangensGamma = Math.tan(gammaAngle / secondValue)
         tangensGamma2 = tangensGamma
@@ -37,19 +37,18 @@ function App() {
 
     function calculateTriangle(firstValue, secondValue, thirdValue) {
         // Für SSS
-        const firstValue2 = Math.pow(firstValue, 2) - Math.pow(secondValue, 2) - Math.pow(thirdValue, 2)
-        const cosineOfAlpha = firstValue2 / 2 * secondValue * thirdValue
+        const cosineOfAlpha = Math.cos(secondValue / thirdValue)
+        const alphaAngle = Math.cos()
         cosineAlpha2 = cosineOfAlpha
-        const alphaAngle = Math.cos(cosineOfAlpha)
         angleAlpha = alphaAngle
         const secondValue2 = Math.pow(secondValue, 2) - Math.pow(firstValue, 2) - Math.pow(thirdValue, 2)
-        const cosineOfBeta = secondValue2 / (-2 * firstValue * thirdValue)
+        const betaAngle = Math.cos(secondValue2 / ((-2 * firstValue * thirdValue)))
+        const cosineOfBeta = Math.cos(betaAngle)
         cosineBeta2 = cosineOfBeta
-        const betaAngle = Math.cos(secondValue2 / (-2 * firstValue * thirdValue))
         angleBeta = betaAngle
-        const gammaAngle = 180 - (alphaAngle + betaAngle)
+        const gammaAngle = 180 - alphaAngle - betaAngle
         angleGamma = gammaAngle
-        calculateSinusTangens(alphaAngle, betaAngle, gammaAngle, secondValue, thirdValue)
+        calculateSinusTangens(alphaAngle, betaAngle, gammaAngle, secondValue, thirdValue, firstValue)
         findoutTriangleSpecies(firstValue, secondValue, thirdValue)
     }
 
@@ -147,7 +146,7 @@ function App() {
                 <FormControl
                     aria-label="Default"
                     aria-describedby="inputGroup-sizing-default"
-                    value={valueA}
+                    value={valueC}
                     onChange={e => setValueC(e.target.value)}
                 />
             </InputGroup>
