@@ -18,6 +18,8 @@ function App() {
     let angleAlpha = null
     let angleBeta = null
     let angleGamma = null
+    let b = ''
+    let c = ''
 
     function calculateSinusTangens(alphaAngle, secondValue, thirdValue, firstValue) {
         const sinusAlpha = Math.sin( firstValue / thirdValue)
@@ -32,15 +34,29 @@ function App() {
 
     function calculateTriangle(firstValue, secondValue, thirdValue) {
         // Für SSS
+        if(secondValue >= 20) {
+            // For WWS(a, alpha, beta)
+            const gamma = 180 - firstValue - secondValue
+            angleGamma = gamma
+            const seiteB = ((firstValue / Math.sin(firstValue)) * Math.sin(secondValue) )
+            b = seiteB
+            const seiteC = ((firstValue / Math.sin(firstValue) * Math.sin(gamma)))
+            c = seiteC
+            
+        }
+        else {
         const cosineOfAlpha = Math.cos(secondValue / thirdValue)
         const alphaAngle = Math.cos()
         cosineAlpha2 = cosineOfAlpha
         angleAlpha = alphaAngle
        const cosineOfBeta = Math.cos(firstValue/thirdValue)
         cosineBeta2 = cosineOfBeta
+        
+ 
         calculateSinusTangens(alphaAngle, secondValue, thirdValue, firstValue)
         calculateAngles(cosineOfAlpha, cosineOfBeta, thirdValue, firstValue, secondValue)
         findoutTriangleSpecies(firstValue, secondValue, thirdValue)
+        }
     }
 
     
@@ -165,6 +181,9 @@ function App() {
             <canvas id="canvas">
 
             </canvas>
+            <h3>Seiten</h3>
+            <p>b: {c} </p>
+            <p>c : {c}</p>
             <br />
             <h3>Triangle Species</h3>
             <h3>{triangleSpecies}</h3>
