@@ -19,36 +19,26 @@ function App() {
     let angleBeta = null
     let angleGamma = null
 
-    function calculateSinusTangens(alphaAngle, betaAngle, gammaAngle, secondValue, thirdValue, firstValue) {
+    function calculateSinusTangens(alphaAngle, secondValue, thirdValue, firstValue) {
         const sinusAlpha = Math.sin( firstValue / thirdValue)
         sinusAlpha2 = sinusAlpha
         const sinusBeta = Math.sin(secondValue / thirdValue)
         sinusBeta2 = sinusBeta
-        const sinusGamma = Math.sin(thirdValue / thirdValue)
-        sinusGamma2 = sinusGamma
         const tangensAlpha = Math.tan(firstValue / secondValue)
         tangesAlpha2 = tangensAlpha
         const tangensBeta = Math.tan(secondValue / firstValue)
         tangensBeta2 = tangensBeta
-        const tangensGamma = Math.tan(gammaAngle / secondValue)
-        tangensGamma2 = tangensGamma
-        console.log(tangensGamma)
     }
 
     function calculateTriangle(firstValue, secondValue, thirdValue) {
         // Für SSS
         const cosineOfAlpha = Math.cos(secondValue / thirdValue)
         const alphaAngle = Math.cos()
-        cosineAlpha2 = cosineOfAlpha
         angleAlpha = alphaAngle
         const secondValue2 = Math.pow(secondValue, 2) - Math.pow(firstValue, 2) - Math.pow(thirdValue, 2)
-        const betaAngle = Math.cos(secondValue2 / ((-2 * firstValue * thirdValue)))
-        const cosineOfBeta = Math.cos(betaAngle)
+       const cosineOfBeta = Math.cos(firstValue/thirdValue)
         cosineBeta2 = cosineOfBeta
-        angleBeta = betaAngle
-        const gammaAngle = 180 - alphaAngle - betaAngle
-        angleGamma = gammaAngle
-        calculateSinusTangens(alphaAngle, betaAngle, gammaAngle, secondValue, thirdValue, firstValue)
+        calculateSinusTangens(alphaAngle, secondValue, thirdValue, firstValue)
         findoutTriangleSpecies(firstValue, secondValue, thirdValue)
     }
 
@@ -121,7 +111,7 @@ function App() {
                     aria-describedby="inputGroup-sizing-default"
                     value={valueA}
                     onChange={e => setValueA(e.target.value)}
-                />
+                /><p>Gegenkathete</p>
             </InputGroup>
             <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -140,7 +130,7 @@ function App() {
                     aria-describedby="inputGroup-sizing-default"
                     value={valueB}
                     onChange={e => setValueB(e.target.value)}
-                />
+                /><p>Ankathete</p>
             </InputGroup>
             <InputGroup className="form-group w-50">
                 <FormControl
@@ -148,20 +138,18 @@ function App() {
                     aria-describedby="inputGroup-sizing-default"
                     value={valueC}
                     onChange={e => setValueC(e.target.value)}
-                />
+                /><p>Hypotenuse</p>
             </InputGroup>
             <button onClick={calculateTriangle(valueA, valueB, valueC)}>Calculate</button>
             <h3>Sinus Cosinus</h3>
             <p>Sinus Alpha: {sinusAlpha2}</p>
             <p>Sinus Beta: {sinusBeta2}</p>
-            <p>Sinus Gamma: {sinusGamma2}</p>
             <p>Cosinus Alpha: {cosineAlpha2}</p>
             <p>Cosinus Beta: {cosineBeta2}</p>
             <br />
             <h3>Tangens</h3>
             <p>Tangens Alpha: {tangesAlpha2} </p>
             <p>Tangens Beta: {tangensBeta2}</p>
-            <p>Tangens Gamma: {tangensGamma2}</p>
             <h3>Triangle</h3>
             <button onClick={initializeCanvas(valueA, valueB, valueC, angleAlpha, angleBeta)}>Create Triangle</button>
             <canvas id="canvas">
