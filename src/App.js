@@ -6,7 +6,7 @@ function App() {
     const [valueA, setValueA] = useState(0)
     const [valueB, setValueB] = useState(0)
     const [valueC, setValueC] = useState(0)
-    const [triangleSpecies, setTriangleSpecies] = useState('not specified')
+    let triangleSpecies = 'jk'
     let sinusAlpha2 = 'jk'
     let sinusBeta2 = 'jk'
     let sinusGamma2 = 'jk'
@@ -34,18 +34,28 @@ function App() {
         // Für SSS
         const cosineOfAlpha = Math.cos(secondValue / thirdValue)
         const alphaAngle = Math.cos()
+        cosineAlpha2 = cosineOfAlpha
         angleAlpha = alphaAngle
-        const secondValue2 = Math.pow(secondValue, 2) - Math.pow(firstValue, 2) - Math.pow(thirdValue, 2)
        const cosineOfBeta = Math.cos(firstValue/thirdValue)
         cosineBeta2 = cosineOfBeta
         calculateSinusTangens(alphaAngle, secondValue, thirdValue, firstValue)
+        calculateAngles(cosineOfAlpha, cosineOfBeta, thirdValue, firstValue, secondValue)
         findoutTriangleSpecies(firstValue, secondValue, thirdValue)
     }
 
-    const findoutTriangleSpecies = (firstValue, secondValue, thirdValue) => {
+    
+    function findoutTriangleSpecies (firstValue, secondValue, thirdValue)  {
         if (firstValue === secondValue && firstValue === thirdValue && secondValue === thirdValue) {
-            // triangleSpecies = 'gleichseitig'
+            triangleSpecies = 'gleichseitig'
         }
+        if(firstValue === secondValue || firstValue === thirdValue ||  secondValue === thirdValue ) {
+            triangleSpecies = 'gleichschenklig'
+        }
+    }
+    function calculateAngles(cosineOfAlpha, cosineOfBeta, thirdValue, firstValue, secondValue) {
+        
+
+        
     }
 
     const initializeCanvas = (firstValue, secondValue, thirdValue, alphaAngle, betaAngle) => {
