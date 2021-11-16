@@ -103,15 +103,16 @@ function App() {
     }
 
     return (
-        <div className="App">
-            <h1>TRIGO</h1>
-            <br/>
-            <br/>
+        <Container style={{alignItems: "center", textAlign: "center"}} className="App">
+            <div>
+                <h1>TRIGO</h1>
+                <br/>
+                <br/>
                 <table>
                     <tr>
                         <td>
                             {/*Gegenkathete*/}
-                            <h3>Gegenkathete</h3>
+                            <h5>Gegenkathete</h5>
                             <InputGroup className="form-group w-50">
                                 <FormControl
                                     aria-label="Default"
@@ -122,7 +123,7 @@ function App() {
                             </InputGroup
                             ></td>
                         <td> {/*Ankathete*/}
-                            <h3>Ankathete</h3>
+                            <h5>Ankathete</h5>
                             <InputGroup className="form-group w-50">
                                 <FormControl
                                     aria-label="Default"
@@ -132,7 +133,7 @@ function App() {
                                 />
                             </InputGroup></td>
                         <td> {/*Hypotenuse*/}
-                            <h3>Hypotenuse</h3>
+                            <h5>Hypotenuse</h5>
                             <InputGroup className="form-group w-50">
                                 <FormControl
                                     aria-label="Default"
@@ -142,7 +143,7 @@ function App() {
                                 />
                             </InputGroup></td>
                         <td>{/*Alpha*/}
-                            <h3>Alpha</h3>
+                            <h5>Alpha</h5>
                             <InputGroup className="form-group w-50">
                                 <FormControl
                                     aria-label="Default"
@@ -152,7 +153,7 @@ function App() {
                                 />
                             </InputGroup></td>
                         <td> {/*Beta*/}
-                            <h3>Beta</h3>
+                            <h5>Beta</h5>
                             <InputGroup className="form-group w-50">
                                 <FormControl
                                     aria-label="Default"
@@ -162,7 +163,7 @@ function App() {
                                 />
                             </InputGroup></td>
                         <td>{/*Gamma*/}
-                            <h3>Gamma</h3>
+                            <h5>Gamma</h5>
                             <InputGroup className="form-group w-50">
                                 <FormControl
                                     aria-label="Default"
@@ -173,41 +174,63 @@ function App() {
                             </InputGroup></td>
                     </tr>
                 </table>
+                <br/>
+                {/*Berechnen*/}
+                <Button onClick={calculateTriangle()}>Calculate</Button>
+                <br/>
+                <table>
+                    <tr>
+                        <td>{/*Sinus Cosinus*/}
+                            <div>
+                                <h3>Sinus Cosinus</h3>
+                                <p>Sinus Alpha: {sinusAlpha}</p>
+                                <p>Sinus Beta: {sinusBeta}</p>
+                                <p>Cosinus Alpha: {cosineAlpha}</p>
+                                <p>Cosinus Beta: {cosineBeta}</p>
+                            </div>
+                        </td>
+                        <td>{/*Tangens*/}
+                            <div>
+                                <h3>Tangens</h3>
+                                <p>Tangens Alpha: {tangesAlpha} </p>
+                                <p>Tangens Beta: {tangensBeta}</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <h3>Seiten</h3>
+                                <p>a: {seiteA} </p>
+                                <p>b: {seiteB} </p>
+                                <p>c : {seiteC}</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div><h3>Angles</h3>
+                                <p>Winkel Alpha: {alpha}</p>
+                                <p>Winkel Beta: {beta}</p>
+                                <p>Winkel Gamma: {gamma}</p></div>
+                        </td>
+                        <td>
+                            <div>
+                                <h3>Triangle Species</h3>
+                                <p>{triangleSpecies}</p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
 
-            {/*Berechnen*/}
-            <Button onClick={calculateTriangle()}>Calculate</Button>
 
-            {/*Sinus Cosinus*/}
-            <h3>Sinus Cosinus</h3>
-            <p>Sinus Alpha: {sinusAlpha}</p>
-            <p>Sinus Beta: {sinusBeta}</p>
-            <p>Cosinus Alpha: {cosineAlpha}</p>
-            <p>Cosinus Beta: {cosineBeta}</p>
-            <br/>
+                <br/>
 
-            {/*Tangens*/}
-            <h3>Tangens</h3>
-            <p>Tangens Alpha: {tangesAlpha} </p>
-            <p>Tangens Beta: {tangensBeta}</p>
-            <h3>Triangle</h3>
-            <Button onClick={() => initializeCanvas}>Create Triangle</Button>
-            <canvas id="canvas">
+                <Button onClick={() => initializeCanvas}>Create Triangle</Button>
+                <canvas id="canvas">
 
-            </canvas>
-            {/*Seiten*/}
-            <h3>Seiten</h3>
-            <p>a: {seiteA} </p>
-            <p>b: {seiteB} </p>
-            <p>c : {seiteC}</p>
-            <br/>
-            <h3>Triangle Species</h3>
-            <h3>{triangleSpecies}</h3>
-            <h3>Angles</h3>
-            <p>Winkel Alpha: {alpha}</p>
-            <p>Winkel Beta: {beta}</p>
-            <p>Winkel Gamma: {gamma}</p>
+                </canvas>
+                {/*Seiten*/}
+                <br/>
 
-        </div>
+            </div>
+        </Container>
 
     );
 }
