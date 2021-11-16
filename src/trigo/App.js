@@ -1,5 +1,5 @@
 import '../App.css';
-import {Button, FormControl, InputGroup} from "react-bootstrap";
+import {Button, Container, FormControl, InputGroup} from "react-bootstrap";
 import {useState} from "react";
 
 function App() {
@@ -107,78 +107,73 @@ function App() {
             <h1>TRIGO</h1>
             <br/>
             <br/>
-        <Grid>
-            {/*Gegenkathete*/}
-            <h3>Gegenkathete</h3>
-            <InputGroup className="form-group w-50">
-                <FormControl
-                    aria-label="Default"
-                    aria-describedby="inputGroup-sizing-default"
-                    value={seiteA}
-                    onChange={e => setSeiteA(e.target.value)}
-                />
-            </InputGroup>
-            <br/>
+                <table>
+                    <tr>
+                        <td>
+                            {/*Gegenkathete*/}
+                            <h3>Gegenkathete</h3>
+                            <InputGroup className="form-group w-50">
+                                <FormControl
+                                    aria-label="Default"
+                                    aria-describedby="inputGroup-sizing-default"
+                                    value={seiteA}
+                                    onChange={e => setSeiteA(e.target.value)}
+                                />
+                            </InputGroup
+                            ></td>
+                        <td> {/*Ankathete*/}
+                            <h3>Ankathete</h3>
+                            <InputGroup className="form-group w-50">
+                                <FormControl
+                                    aria-label="Default"
+                                    aria-describedby="inputGroup-sizing-default"
+                                    value={seiteB}
+                                    onChange={e => setSeiteB(e.target.value)}
+                                />
+                            </InputGroup></td>
+                        <td> {/*Hypotenuse*/}
+                            <h3>Hypotenuse</h3>
+                            <InputGroup className="form-group w-50">
+                                <FormControl
+                                    aria-label="Default"
+                                    aria-describedby="inputGroup-sizing-default"
+                                    value={seiteC}
+                                    onChange={e => setSeiteC(e.target.value)}
+                                />
+                            </InputGroup></td>
+                        <td>{/*Alpha*/}
+                            <h3>Alpha</h3>
+                            <InputGroup className="form-group w-50">
+                                <FormControl
+                                    aria-label="Default"
+                                    aria-describedby="inputGroup-sizing-default"
+                                    value={alpha}
+                                    onChange={e => setAlpha(e.target.value)}
+                                />
+                            </InputGroup></td>
+                        <td> {/*Beta*/}
+                            <h3>Beta</h3>
+                            <InputGroup className="form-group w-50">
+                                <FormControl
+                                    aria-label="Default"
+                                    aria-describedby="inputGroup-sizing-default"
+                                    value={beta}
+                                    onChange={e => setBeta(e.target.value)}
+                                />
+                            </InputGroup></td>
+                        <td>{/*Gamma*/}
+                            <h3>Gamma</h3>
+                            <InputGroup className="form-group w-50">
+                                <FormControl
+                                    aria-label="Default"
+                                    aria-describedby="inputGroup-sizing-default"
+                                    value={gamma}
+                                    onChange={e => setGamma(e.target.value)}
+                                />
+                            </InputGroup></td>
+                    </tr>
+                </table>
 
-            {/*Ankathete*/}
-            <h3>Ankathete</h3>
-            <InputGroup className="form-group w-50">
-                <FormControl
-                    aria-label="Default"
-                    aria-describedby="inputGroup-sizing-default"
-                    value={seiteB}
-                    onChange={e => setSeiteB(e.target.value)}
-                />
-            </InputGroup>
-            <br/>
-
-            {/*Hypotenuse*/}
-            <h3>Hypotenuse</h3>
-            <InputGroup className="form-group w-50">
-                <FormControl
-                    aria-label="Default"
-                    aria-describedby="inputGroup-sizing-default"
-                    value={seiteC}
-                    onChange={e => setSeiteC(e.target.value)}
-                />
-            </InputGroup>
-            <br/>
-
-            {/*Alpha*/}
-            <h3>Alpha</h3>
-            <InputGroup className="form-group w-50">
-                <FormControl
-                    aria-label="Default"
-                    aria-describedby="inputGroup-sizing-default"
-                    value={alpha}
-                    onChange={e => setAlpha(e.target.value)}
-                />
-            </InputGroup>
-            <br/>
-
-            {/*Beta*/}
-            <h3>Beta</h3>
-            <InputGroup className="form-group w-50">
-                <FormControl
-                    aria-label="Default"
-                    aria-describedby="inputGroup-sizing-default"
-                    value={beta}
-                    onChange={e => setBeta(e.target.value)}
-                />
-            </InputGroup>
-            <br/>
-
-            {/*Gamma*/}
-            <h3>Gamma</h3>
-            <InputGroup className="form-group w-50">
-                <FormControl
-                    aria-label="Default"
-                    aria-describedby="inputGroup-sizing-default"
-                    value={gamma}
-                    onChange={e => setGamma(e.target.value)}
-                />
-            </InputGroup>
-        </Grid>
             {/*Berechnen*/}
             <Button onClick={calculateTriangle()}>Calculate</Button>
 
