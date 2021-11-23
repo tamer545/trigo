@@ -120,9 +120,10 @@ function App() {
                                     value={seiteA}
                                     onChange={e => setSeiteA(e.target.value)}
                                 />
-                            </InputGroup
-                            ></td>
-                        <td> {/*Ankathete*/}
+                            </InputGroup>
+                        </td>
+                        <td>
+                            {/*Ankathete*/}
                             <h5>Ankathete</h5>
                             <InputGroup className="form-group w-50">
                                 <FormControl
@@ -131,8 +132,10 @@ function App() {
                                     value={seiteB}
                                     onChange={e => setSeiteB(e.target.value)}
                                 />
-                            </InputGroup></td>
-                        <td> {/*Hypotenuse*/}
+                            </InputGroup>
+                        </td>
+                        <td>
+                            {/*Hypotenuse*/}
                             <h5>Hypotenuse</h5>
                             <InputGroup className="form-group w-50">
                                 <FormControl
@@ -141,8 +144,10 @@ function App() {
                                     value={seiteC}
                                     onChange={e => setSeiteC(e.target.value)}
                                 />
-                            </InputGroup></td>
-                        <td>{/*Alpha*/}
+                            </InputGroup>
+                        </td>
+                        <td>
+                            {/*Alpha*/}
                             <h5>Alpha</h5>
                             <InputGroup className="form-group w-50">
                                 <FormControl
@@ -151,8 +156,10 @@ function App() {
                                     value={alpha}
                                     onChange={e => setAlpha(e.target.value)}
                                 />
-                            </InputGroup></td>
-                        <td> {/*Beta*/}
+                            </InputGroup>
+                        </td>
+                        <td>
+                            {/*Beta*/}
                             <h5>Beta</h5>
                             <InputGroup className="form-group w-50">
                                 <FormControl
@@ -161,8 +168,10 @@ function App() {
                                     value={beta}
                                     onChange={e => setBeta(e.target.value)}
                                 />
-                            </InputGroup></td>
-                        <td>{/*Gamma*/}
+                            </InputGroup>
+                        </td>
+                        <td>
+                            {/*Gamma*/}
                             <h5>Gamma</h5>
                             <InputGroup className="form-group w-50">
                                 <FormControl
@@ -171,7 +180,8 @@ function App() {
                                     value={gamma}
                                     onChange={e => setGamma(e.target.value)}
                                 />
-                            </InputGroup></td>
+                            </InputGroup>
+                        </td>
                     </tr>
                 </table>
                 <br/>
